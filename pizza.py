@@ -14,23 +14,30 @@ def get_size_price(base_price, size):
 def calculate_total(pizza):
     total = pizza["price"]
     # for topping in toppings:
-    #     total += topping["price"]
+    #      total += topping["price"]
     return total
 
 menu = [
-    {"name" : "Margharita","base_price": 10.99,},
-    {"name": "Pepperoni","base_price": 12.99,}
+    {
+        "name" : "Margharita",
+        "base_price": 10.99,
+    },
+    {
+        "name": "Pepperoni",
+        "base_price": 12.99,
+    },
 ]
 
 current_order = {
     "pizza": None,
     "size": None,
-    "total": 0.0,
+    "toppings": [],
+    "total": 0.0
 }
 
 display_menu(menu)
-selection = int(input("Choose a pizza (1-2): ")) -1
-current_order["pizza"]= menu[selection]
+selection = int(input("Choose a pizza (1-2): ")) - 1
+current_order["pizza"]= menu[selection] # type: ignore
 
 size=input("Choose size (small/medium/large): ")
 current_order["price"] = get_size_price(menu[selection]["base_price"], size)
